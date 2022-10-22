@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Rick Hsu Section 21 -->
+    <!-- On my honor, I have neither received nor given any unauthorized assistance on this assignment -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Orders Program</title>
+</head>
+
+<body>
+    <script>
+
+
+    var purchaseType = prompt("Enter purchase type as delivery or store").toLowerCase();
+    var numPies = prompt("Enter numbers of pies");
+    var numTops = prompt("Enter number of toppings");
+    if (purchaseType == "delivery"){
+        var tipOption = prompt("Enter tip option as yes or no").toLowerCase();
+        var tipAmount = 0;
+        if (tipOption == "yes")
+        {
+            tipAmount = prompt("Enter amount to tip if you would like to tip, otherwise enter 0");
+            tipAmount = Number(tipAmount);
+        }
+        var contactless = prompt("Enter if you would like a contactless delivery as yes or no").toLowerCase();
+    }
+    else{
+        var numDrinks = prompt("Enter number of drinks");
+    }
+    
+    
+    var pieCost = numPies *15;
+    var toppingCost = numTops *0.5 *numPies;
+    
+    if (purchaseType == "delivery")
+    {
+        var totalPrice = 3+ toppingCost + pieCost;
+        var taxPrice = totalPrice * 0.07;
+        var postTax = taxPrice + totalPrice;
+        var finalCost = postTax;
+        if (tipOption == "yes")
+        {
+            finalCost = postTax + tipAmount;
+        }
+    }
+    else
+    {
+        var fountainCost = numDrinks * 2;
+        var totalPrice = fountainCost + toppingCost + pieCost;
+        var taxPrice = totalPrice * 0.07;
+        var postTax = taxPrice + totalPrice;
+        var finalCost = postTax;
+    }
+    totalPrice=Number(totalPrice);
+    taxPrice=Number(taxPrice);
+    finalCost = Number(finalCost);
+
+    alert("Total Price is " + totalPrice.toFixed(2));
+    alert("Sales Tax is " + taxPrice.toFixed(2)); 
+
+    if (purchaseType == "delivery"){
+        tipAmount = Number(tipAmount);
+        alert("Tip Cost is " + tipAmount.toFixed(2));
+    }
+
+    alert("Final cost of the bill is " + finalCost.toFixed(2));
+
+    if(purchaseType=="delivery"){
+        alert("Contactless: "+ contactless);
+    }
+
+    </script>
+    
+
+
+
+
+</body>
+</html>
