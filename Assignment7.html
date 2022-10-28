@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Rick Hsu Section 21 -->
+    <!-- On my honor, I have neither received nor given any unauthorized assistance on this assignment -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzeria Orders Program</title>
+</head>
+
+<body style="background-color:rgb(0, 255, 208);">
+    <h1>Pizzeria Orders</h1>
+    <h2>Inputs</h2>
+    <script>
+        var purchaseType = ""
+        var tipOption = ""
+        var contactless = ""
+    </script>
+    
+    <form>
+        <table>
+          <tr>
+            <td align="left">Purchase Type:</td>
+            <td align="left"><label>Store</label><input type="radio" id="storeval" name="purchase type" value="store" onclick='
+                purchaseType = "store"
+                '/>
+                
+                <label>Delivery</label><input type="radio" id="deliveryval" name="purchase type" value = "delivery" onclick = '
+                purchaseType = "delivery"
+                '/></td>
+          </tr>
+          <tr>
+            <td align="left">Numbers of Pies:</td>
+            <td align="left"><input type="text" id = "inputPies"/></td>
+          </tr>
+          <tr>
+            <td align="left">Number of Toppings:</td>
+            <td align="left"><input type="text" id="inputToppings" /></td>
+          </tr>
+          <tr>
+            <td align="left">Number of Drinks(Store order only):</td>
+            <td align="left"><input type="text" id="inputDrinks" /></td>
+          </tr>
+          <tr>
+            <td align="left">Delivery Tip(Delivery orders only):</td>
+            <td align="left"><label>Yes</label><input id = "tipyes" type="radio" name="tip option" onclick='
+                
+                tipOption = "yes"'/><label>No</label><input type="radio" id="tipno" name="tip option" onclick='tipOption = "no"'/></td>
+          </tr>
+          <tr>
+            <td align="left">Tip Amount(Delivery orders only):</td>
+            <td align="left"><input type="text" id="inputTip" /></td>
+          </tr>
+          <tr>
+            <td align="left">Contactless Delivery(Delivery orders only):</td>
+            <td align="left"><label>Yes</label><input type="radio" id="contactyes" name="contactlesss" onclick = 'contactless = "yes"'/><label>No</label><input type="radio" id="contactno"name="contactlesss"
+                onclick = 'contactless = "no"'/>
+          </tr>
+
+        </table>
+    </form>
+    <p></p>
+
+    <button onclick = ' 
+        
+        var numPies = inputPies.value
+        
+        
+        var numTops = inputToppings.value
+       
+        var tipAmount = inputTip.value
+        var numDrinks = inputDrinks.value
+        
+        
+        
+        var pieCost = numPies *15
+        
+        var toppingCost = numTops *0.5 *numPies;
+        if (purchaseType == "delivery")
+        {
+            var totalPrice = 3+ toppingCost + pieCost
+            var taxPrice = totalPrice * 0.07
+            var postTax = taxPrice + totalPrice
+            var finalCost = postTax
+            
+            if (tipOption == "yes")
+            {
+                
+                finalCost = Number(postTax) + Number(tipAmount)
+                
+
+            }
+        }
+        else
+        {
+            var fountainCost = numDrinks * 2;
+            var totalPrice = fountainCost + toppingCost + pieCost;
+            var taxPrice = totalPrice * 0.07;
+            var postTax = taxPrice + totalPrice;
+            var finalCost = postTax;
+        }
+        totalPrice=Number(totalPrice);
+        taxPrice=Number(taxPrice);
+        finalCost = Number(finalCost);
+
+        
+        outPrice.value = totalPrice.toFixed(2)
+        outTax.value = taxPrice.toFixed(2)
+
+        if (purchaseType == "delivery"){
+            tipAmount = Number(tipAmount);
+            outAmount.value = tipAmount.toFixed(2)
+        }
+
+        outCost.value = finalCost.toFixed(2)
+
+        if(purchaseType=="delivery"){
+            contactq.value = contactless
+        }
+        
+    
+    '> Process
+    </button>
+
+    
+    <button onclick = '
+
+    deliveryval.checked = false
+    storeval.checked = false
+    inputPies.value = ""
+    inputToppings.value =""
+    inputDrinks.value =""
+    tipyes.checked = false
+    tipno.checked = false
+    inputTip.value = ""
+    contactyes.checked=false
+    contactno.checked=false
+
+    outPrice.value =""
+    outTax.value = ""
+    outAmount.value = ""
+    outCost.value = ""
+    contactq.value = ""
+
+    '> Clear
+    
+        
+    
+    </button>
+
+    <h1>Outputs</h1>
+    
+    <form>
+        <table>
+          <tr>
+            <td align="left">Total Price</td>
+            <td align="left"><label>$</label><input type="text" id = "outPrice"/></td>
+          </tr>
+          <tr>
+            <td align="left">Sales Tax</td>
+            <td align="left"><label>$</label><input type="text" id="outTax" /></td>
+          </tr>
+          <tr>
+            <td align="left">Tip Amount</td>
+            <td align="left"><label>$</label><input type="text" id="outAmount" /></td>
+          </tr>
+          <tr>
+            <td align="left">Final Cost</td>
+            <td align="left"><label>$</label><input type="text" id="outCost" /></td>
+          </tr>
+          <tr>
+            <td align="left">Contactless Delivery</td>
+            <td align="left"><input type="text" id="contactq" /></td>
+          </tr>
+
+        </table>
+      </form>
+
+
+</body>
+</html>
