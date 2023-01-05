@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Rick Hsu Section 21 -->
+    <!-- On my honor, I have neither received nor given any unauthorized assistance on this assignment -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment</title>
+</head>
+
+
+<body>
+
+    <h1>Investment Club</h1>
+    <h2>Summary Report</h2>
+    <script>
+
+    function findBiggest(arr)
+    {
+        var biggest = 0;
+        var index = 0;
+        for (i = 0; i<arr.length; i++){
+            if (arr[i] > biggest){
+                biggest = arr[i]
+                index = i
+            }
+        }
+        return index;
+    }
+    function findSmallest(arr)
+    {
+        var smallest = Infinity
+        var index = 0;
+        for (i = 0; i<arr.length; i++){
+            if (arr[i] < smallest){
+                smallest = arr[i]
+                index = i
+            }
+        }
+        return index;
+        
+    }
+    function findTotal(arr)
+    {
+        var total = 0
+        for (i = 0; i<arr.length; i++){
+            total += Number(arr[i]);
+        }
+        return total;
+    }
+
+    var num = prompt("Enter number of members");
+    num = Number(num);
+    const name = [];
+    const investment = [];
+
+    var growth = Math.floor(Math.random() * 101);
+
+    for (i = 0; i<num; i++)
+    {
+        var temp = prompt("Enter name of member");
+        var temp2 = prompt("Enter " +temp + "'s investment amount");
+        name.push(temp);
+        investment.push(temp2);
+    }
+    var d = new Date()
+    document.write("Report Date: " + d + "<br>");
+    document.write("<i>(All $ numbers in thousands)</i><br><hr><br><br>");
+
+
+
+    document.write("<b>Smallest Investment</b>: " +name[findSmallest(investment)] +", $" + investment[findSmallest(investment)] + "<br>");
+    document.write("<b>Largest Investment</b>: " +name[findBiggest(investment)] +", $" + investment[findBiggest(investment)]+ "<br>"+ "<br>");
+
+    document.write("<b>Total Investment</b>: $" +findTotal(investment).toFixed(2)+ "<br>");
+    document.write("<b>Average Investment</b>: $" +(findTotal(investment)/num).toFixed(2)+ "<br>"+ "<br>");
+
+    document.write("<b>Projected growth</b>: " + growth + "%<br>");
+
+    for (i = 0; i<num; i++)
+    {
+        document.write("Projected Earnings for " + name[i] + ": $" + (investment[i] * growth /100).toFixed(2) + "<br>");
+    }
+
+
+    </script>
+
+
+</body>
+</html>
